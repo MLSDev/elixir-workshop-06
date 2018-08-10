@@ -11,7 +11,8 @@
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
-import css from "../css/app.css"
+
+import css from "../css/app.scss"
 import "phoenix_html"
 
 // Import local files
