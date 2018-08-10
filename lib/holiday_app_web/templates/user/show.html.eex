@@ -1,0 +1,37 @@
+<h2>Show User</h2>
+
+<div class="row">
+  <div class="col-md-2">
+    <%= img_tag(@user.photo_url, class: "img-thumbnail") %>
+  </div>
+
+  <div class="col-md-10">
+    <ul>
+      <li>
+        <strong>Name:</strong>
+        <%= @user.name %>
+      </li>
+
+      <li>
+        <strong>E-mail:</strong>
+        <%= @user.email %>
+      </li>
+
+      <li>
+        <strong>Provider:</strong>
+        <%= humanize(@user.provider) %>
+      </li>
+
+      <li>
+        <strong>Role:</strong>
+        <%= humanize(@user.role) %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<%= if can_update_user?(@conn, @user) do %>
+  <span><%= link "Edit", to: user_path(@conn, :edit, @user) %></span>
+  |
+<% end %>
+<span><%= link "Back", to: user_path(@conn, :index) %></span>

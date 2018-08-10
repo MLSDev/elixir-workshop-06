@@ -1,0 +1,24 @@
+<h2>Show Holiday</h2>
+
+<ul>
+  <li>
+    <strong>Title:</strong>
+    <%= @holiday.title %>
+  </li>
+
+  <li>
+    <strong>Date:</strong>
+    <%= @holiday.date %>
+  </li>
+
+  <li>
+    <strong>Kind:</strong>
+    <%= @holiday.kind %>
+  </li>
+</ul>
+
+<%= if can_update_holiday?(@conn, @holiday) do %>
+  <span><%= link "Edit", to: holiday_path(@conn, :edit, @holiday) %></span>
+  |
+<% end %>
+<span><%= link "Back", to: holiday_path(@conn, :index) %></span>
