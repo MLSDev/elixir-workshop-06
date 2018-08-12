@@ -4,6 +4,20 @@ defmodule HolidayAppWeb.ViewHelpers do
   alias HolidayApp.Users.{Role, UserPolicy}
   alias HolidayApp.Holidays.HolidayPolicy
 
+  def nav_link(conn, text, opts) do
+    active = (Keyword.get(opts, :to) == conn.request_path)
+
+    ~E"""
+      <li class="nav-item <%= if active, do: ~s(active) %>">
+        <%= link text, Keyword.merge(opts, class: "nav-link") %>
+      </li>
+    """
+  end
+
+  def current_path?(conn, path) do
+    conn.request_path == path
+  end
+
   def current_user(conn) do
     conn.assigns[:current_user]
   end
