@@ -1,3 +1,11 @@
 @import "~bootstrap/scss/bootstrap";
 
 .alert:empty { display: none; }
+
+form.link {
+  display: inline;
+}
+
+nav.navbar {
+  margin-bottom: 8px;
+}
