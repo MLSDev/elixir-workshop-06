@@ -14,6 +14,9 @@
 
 import css from "../css/app.scss"
 import "phoenix_html"
+import "jquery"
+import "popper.js"
+import "bootstrap"
 
 // Import local files
 //
