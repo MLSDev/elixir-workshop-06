@@ -1,5 +1,5 @@
-<div class="container">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
     <a class="navbar-brand" href="/">Holiday App</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -23,5 +23,5 @@
         </li>
       </ul>
     <% end %>
-  </nav>
-</div>
+  </div>
+</nav>

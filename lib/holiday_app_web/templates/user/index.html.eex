@@ -1,7 +1,7 @@
-<h2>Listing Users</h2>
+<h2 class="display-2">Listing Users</h2>
 
-<table class="table">
-  <thead>
+<table class="table table-hover">
+  <thead class="thead-light">
     <tr>
       <th>Name</th>
       <th>E-mail</th>
@@ -20,13 +20,15 @@
           <%= link "#{user.email}", to: user_path(@conn, :show, user) %>
         </td>
         <td><%= humanize(user.provider) %></td>
-        <td>
-          <span class="label label-warning"><%= user.role %></span>
-        </td>
-        <td class="text-right">
-          <span><%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %></span>
+        <td><%= humanize(user.role) %></span>
+          <td class="text-right">
+          <span>
+            <%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-sm btn-outline-info" %>
+          </span>
           <%= if can_update_user?(@conn, user) do %>
-            <span><%= link "Edit", to: user_path(@conn, :edit, user), class: "btn btn-primary btn-xs" %></span>
+            <span>
+              <%= link "Edit", to: user_path(@conn, :edit, user), class: "btn btn-sm  btn-outline-primary" %>
+            </span>
           <% end %>
         </td>
       </tr>

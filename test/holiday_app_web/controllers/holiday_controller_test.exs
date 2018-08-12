@@ -120,7 +120,7 @@ defmodule HolidayAppWeb.HolidayControllerTest do
       assert redirected_to(conn) == holiday_path(conn, :show, holiday)
 
       conn = get conn, holiday_path(conn, :show, holiday)
-      assert html_response(conn, 200) =~ "workday"
+      assert html_response(conn, 200) =~ "Workday"
     end
 
     @tag login: :admin

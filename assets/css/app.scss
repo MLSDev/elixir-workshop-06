@@ -1,5 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
 
+body {
+  padding-bottom: 1rem;
+}
+
 .alert:empty { display: none; }
 
 form.link {
@@ -8,4 +12,18 @@ form.link {
 
 nav.navbar {
   margin-bottom: 8px;
+}
+
+.navbar-container {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.invalid-feedback {
+  display: block;
+}
+
+
+td {
+ @extend .align-middle;
 }

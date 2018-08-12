@@ -1,29 +1,32 @@
 <%= form_for @changeset, @action, fn f -> %>
-  <%= if @changeset.action do %>
-    <div class="alert alert-danger">
-      <p>Oops, something went wrong! Please check the errors below.</p>
+  <%= if @changeset.action, do: alert("Oops, something went wrong! Please check the errors below.", :danger) %>
+
+  <div class="form-group row">
+    <%= label f, :title, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-4">
+      <%= text_input f, :title, class: "form-control" %>
+      <%= error_tag f, :title %>
     </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= label f, :title, class: "control-label" %>
-    <%= text_input f, :title, class: "form-control" %>
-    <%= error_tag f, :title %>
   </div>
 
-  <div class="form-group">
-    <%= label f, :date, class: "control-label" %>
-    <%= date_select f, :date, class: "form-control" %>
-    <%= error_tag f, :date %>
+  <div class="form-group row">
+    <%= label f, :date, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-4">
+      <%= date_select f, :date, class: "form-control" %>
+      <%= error_tag f, :date %>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= label f, :kind, class: "control-label" %>
-    <%= select f, :kind, ["holiday", "workday"], class: "form-control" %>
-    <%= error_tag f, :kind %>
+  <div class="form-group row">
+    <%= label f, :kind, class: "col-sm-2 col-form-label" %>
+    <div class="col-sm-4">
+      <%= select f, :kind, ["holiday", "workday"], class: "form-control" %>
+      <%= error_tag f, :kind %>
+    </div>
   </div>
 
   <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
+    <%= link "Cancel", to: holiday_path(@conn, :index), class: "btn btn-outline-secondary" %>
   </div>
 <% end %>

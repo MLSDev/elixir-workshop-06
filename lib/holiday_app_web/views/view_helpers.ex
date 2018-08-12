@@ -14,6 +14,22 @@ defmodule HolidayAppWeb.ViewHelpers do
     """
   end
 
+  def alert(message, class \\ :info) do
+    ~E"""
+      <div class="alert alert-<%= to_string(class) %> alert-dismissible fade show" role="alert">
+        <%= message %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    """
+  end
+
+  def flash_alert(conn, key, class \\ :info) do
+    message = Phoenix.Controller.get_flash(conn, key)
+    if message, do: alert(message, class)
+  end
+
   def current_path?(conn, path) do
     conn.request_path == path
   end

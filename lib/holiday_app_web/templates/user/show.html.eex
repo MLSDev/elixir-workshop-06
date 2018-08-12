@@ -1,4 +1,4 @@
-<h2>Show User</h2>
+<h2 class="display-2">Show User</h2>
 
 <div class="row">
   <div class="col-md-2">
@@ -31,7 +31,11 @@
 </div>
 
 <%= if can_update_user?(@conn, @user) do %>
-  <span><%= link "Edit", to: user_path(@conn, :edit, @user) %></span>
-  |
+  <span>
+    <%= link "Edit", to: user_path(@conn, :edit, @user), class: "btn btn-outline-primary" %>
+  </span>
 <% end %>
-<span><%= link "Back", to: user_path(@conn, :index) %></span>
+
+<span>
+  <%= link "Back", to: user_path(@conn, :index), class: "btn btn-outline-secondary" %>
+</span>
