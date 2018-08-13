@@ -19,8 +19,8 @@
         <td>
           <%= link "#{user.email}", to: user_path(@conn, :show, user) %>
         </td>
-        <td><%= humanize(user.provider) %></td>
-        <td><%= humanize(user.role) %></span>
+        <td><%= provider(user) %></td>
+        <td><%= role(user) %></span>
           <td class="text-right">
           <span>
             <%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-sm btn-outline-info" %>

@@ -12,7 +12,7 @@
         <%= nav_link(@conn, "Users", to: user_path(@conn, :index)) %>
       </ul>
       <ul class="navbar-nav">
-        <%= nav_link(@conn, current_user(@conn).email, to: user_path(@conn, :edit, current_user(@conn))) %>
+        <%= nav_link(@conn, user_display_name(current_user(@conn)), to: user_path(@conn, :edit, current_user(@conn))) %>
         <%= nav_link(@conn, "Logout", to: auth_path(@conn, :logout), method: :delete) %>
         </li>
       </ul>

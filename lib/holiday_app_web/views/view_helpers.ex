@@ -1,7 +1,7 @@
 defmodule HolidayAppWeb.ViewHelpers do
   use Phoenix.HTML
 
-  alias HolidayApp.Users.{Role, UserPolicy}
+  alias HolidayApp.Users.{User, Role, UserPolicy}
   alias HolidayApp.Holidays.HolidayPolicy
 
   def nav_link(conn, text, opts) do
@@ -59,6 +59,9 @@ defmodule HolidayAppWeb.ViewHelpers do
       user: user
     )
   end
+
+  def user_display_name(%User{name: name}) when not is_nil(name), do: name
+  def user_display_name(%User{email: email}), do: email
 
   def can_create_holiday?(conn) do
     check_holiday_policy(conn, nil, :create)

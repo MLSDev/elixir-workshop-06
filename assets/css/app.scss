@@ -4,15 +4,19 @@ body {
   padding-bottom: 1rem;
 }
 
-.alert:empty { display: none; }
+nav.navbar {
+  margin-bottom: 8px;
+}
+
+td {
+ @extend .align-middle;
+}
 
 form.link {
   display: inline;
 }
 
-nav.navbar {
-  margin-bottom: 8px;
-}
+.alert:empty { display: none; }
 
 .navbar-container {
   padding-left: 0px;
@@ -23,7 +27,7 @@ nav.navbar {
   display: block;
 }
 
-
-td {
- @extend .align-middle;
+.img-thumbnail {
+  max-width: 96px;
+  max-height: 96px;
 }

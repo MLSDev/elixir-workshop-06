@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-md-2">
-    <%= img_tag(@user.photo_url, class: "img-thumbnail") %>
+    <%= img_tag(photo_url(@user), class: "img-thumbnail") %>
   </div>
 
   <div class="col-md-10">
@@ -19,12 +19,12 @@
 
       <li>
         <strong>Provider:</strong>
-        <%= humanize(@user.provider) %>
+        <%= provider(@user) %>
       </li>
 
       <li>
         <strong>Role:</strong>
-        <%= humanize(@user.role) %>
+        <%= role(@user) %>
       </li>
     </ul>
   </div>
