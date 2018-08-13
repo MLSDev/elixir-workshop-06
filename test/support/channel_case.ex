@@ -19,7 +19,7 @@ defmodule HolidayAppWeb.ChannelCase do
     quote do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
-
+      import HolidayApp.Factory
       # The default endpoint for testing
       @endpoint HolidayAppWeb.Endpoint
     end
