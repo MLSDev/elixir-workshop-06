@@ -1,6 +1,6 @@
 # HolidayApp
 
-Internal MLSDev Elixir Workshop #06
+Internal MLSDev Elixir Workshop #06 - Chat
 
 
 ## Up and running
@@ -40,3 +40,10 @@ Check `priv/repo/seeds.exs` file
 
 * Initial commit
   - Copy of last commit of the [previous](https://github.com/MLSDev/elixir-workshop-05) Elixir Workshop
+
+* [**webpack**](https://github.com/MLSDev/elixir-workshop-06/tree/webpack) branch
+  - Replace Brunch with Webpack
+  - Getting ready for Phoenix 1.4
+
+* [**chat**](https://github.com/MLSDev/elixir-workshop-06/tree/chat) branch
+  - Simple chat on Holidays using [Phoenix Channels](https://hexdocs.pm/phoenix/channels.html)
