@@ -3,7 +3,7 @@ defmodule HolidayAppWeb.HolidayChannel do
 
   alias Guardian.Phoenix.Socket
 
-  def join("holiday:" <> holiday_id, _params, socket) do
+  def join("holiday:" <> _holiday_id, _params, socket) do
     send(self(), :after_join)
     {:ok, %{}, socket}
   end
