@@ -34,6 +34,10 @@ defmodule HolidayAppWeb.ViewHelpers do
     conn.request_path == path
   end
 
+  def current_token(conn) do
+    HolidayAppWeb.Guardian.Plug.current_token(conn)
+  end
+
   def current_user(conn) do
     conn.assigns[:current_user]
   end
