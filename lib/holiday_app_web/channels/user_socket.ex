@@ -3,20 +3,18 @@ defmodule HolidayAppWeb.UserSocket do
 
   alias Guardian.Phoenix.Socket
 
-  # channel "room:*", HolidayAppWeb.RoomChannel
+  channel "holiday:*", HolidayAppWeb.HolidayChannel
 
   transport :websocket, Phoenix.Transports.WebSocket
-  # transport :longpoll, Phoenix.Transports.LongPoll
 
-  @doc """
-  """
   def connect(params, socket)
 
   def connect(%{"token" => token}, socket) do
     case Socket.authenticate(socket, HolidayAppWeb.Guardian, token) do
       {:ok, socket} ->
         {:ok, socket}
-      {:error, _} -> :error
+      {:error, _} ->
+        :error
     end
   end
 
@@ -24,8 +22,6 @@ defmodule HolidayAppWeb.UserSocket do
     :error
   end
 
-  @doc """
-  """
   def id(socket) do
     user = Socket.current_resource(socket)
     "user_socket:#{user.id}"
