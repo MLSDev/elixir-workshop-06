@@ -47,3 +47,6 @@ Check `priv/repo/seeds.exs` file
 
 * [**chat**](https://github.com/MLSDev/elixir-workshop-06/tree/chat) branch
   - Simple chat on Holidays using [Phoenix Channels](https://hexdocs.pm/phoenix/channels.html)
+
+* [**resource**](https://github.com/MLSDev/elixir-workshop-06/tree/resource) branch
+  - Attempt to extract ResourceController from User and Holiday controllers
