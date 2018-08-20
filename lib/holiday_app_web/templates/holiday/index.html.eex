@@ -37,7 +37,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= for holiday <- @holidays do %>
+    <%= for holiday <- @resources do %>
         <tr>
           <td><%= holiday.title %></td>
           <td><%= holiday.date %></td>

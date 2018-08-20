@@ -1,4 +1,6 @@
 defmodule HolidayApp.Holidays do
+  @behaviour HolidayApp.ResourceContext
+
   @moduledoc """
   The Holidays context.
   """
@@ -7,6 +9,12 @@ defmodule HolidayApp.Holidays do
   alias HolidayApp.Repo
 
   alias HolidayApp.Holidays.Holiday
+
+
+  @doc """
+  Lists all holidays
+  """
+  def list_resources(_params \\ nil), do: Repo.all(Holiday)
 
   @doc """
   Returns the list of holidays.
@@ -48,7 +56,7 @@ defmodule HolidayApp.Holidays do
       ** (Ecto.NoResultsError)
 
   """
-  def get_holiday!(id), do: Repo.get!(Holiday, id)
+  def get_resource!(id), do: Repo.get!(Holiday, id)
 
   @doc """
   Creates a holiday.
@@ -62,7 +70,7 @@ defmodule HolidayApp.Holidays do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_holiday(attrs \\ %{}) do
+  def create_resource(attrs \\ %{}) do
     %Holiday{}
     |> Holiday.changeset(attrs)
     |> Repo.insert()
@@ -80,7 +88,7 @@ defmodule HolidayApp.Holidays do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_holiday(%Holiday{} = holiday, attrs) do
+  def update_resource(%Holiday{} = holiday, attrs) do
     holiday
     |> Holiday.changeset(attrs)
     |> Repo.update()
@@ -98,7 +106,7 @@ defmodule HolidayApp.Holidays do
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_holiday(%Holiday{} = holiday) do
+  def delete_resource(%Holiday{} = holiday) do
     Repo.delete(holiday)
   end
 
@@ -111,7 +119,7 @@ defmodule HolidayApp.Holidays do
       %Ecto.Changeset{source: %Holiday{}}
 
   """
-  def change_holiday(%Holiday{} = holiday) do
+  def change_resource(%Holiday{} = holiday) do
     Holiday.changeset(holiday, %{})
   end
 end

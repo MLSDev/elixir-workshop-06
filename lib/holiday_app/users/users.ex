@@ -1,7 +1,10 @@
 defmodule HolidayApp.Users do
+  @behaviour HolidayApp.ResourceContext
+
   @moduledoc """
   The Users context.
   """
+
   import Ecto.Query, warn: false
   import Ecto.Changeset
 
@@ -11,12 +14,12 @@ defmodule HolidayApp.Users do
   @doc """
   Lists all users
   """
-  def list_users, do: Repo.all(User)
+  def list_resources(_params \\ nil), do: Repo.all(User)
 
   @doc """
   Finds user by `id`.
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_resource!(id), do: Repo.get!(User, id)
 
   @doc """
   Finds user by email/password combination.
@@ -43,18 +46,18 @@ defmodule HolidayApp.Users do
   Returns an `%Ecto.Changeset{}` for tracking user changes.
 
   ## Examples
-      iex> change_user(user)
+      iex> change_resource(user)
       %Ecto.Changeset{source: %User{}}
 
   """
-  def change_user(%User{} = user) do
+  def change_resource(%User{} = user) do
     User.changeset(user, %{})
   end
 
   @doc """
   Creates new User.
   """
-  def create_user(%{} = attrs) do
+  def create_resource(%{} = attrs) do
     %User{}
     |> User.create_changeset(attrs)
     |> Repo.insert()
@@ -63,7 +66,7 @@ defmodule HolidayApp.Users do
   @doc """
   Updates a User.
   """
-  def update_user(%User{} = user, %{} = attrs) do
+  def update_resource(%User{} = user, %{} = attrs) do
     user
     |> User.changeset(attrs)
     |> Repo.update()
@@ -73,11 +76,11 @@ defmodule HolidayApp.Users do
   Attempts to find and update an existing User by `email`. If not found, creates new one.
   Returns `{:ok, %User{}}` or `{:error, reason}`
   """
-  def create_or_update_user(%{email: email} = attrs)  do
+  def create_or_update(%{email: email} = attrs)  do
     if user = Repo.get_by(User, email: email) do
-      update_user(user, attrs)
+      update_resource(user, attrs)
     else
-      create_user(attrs)
+      create_resource(attrs)
     end
   end
 
@@ -96,5 +99,21 @@ defmodule HolidayApp.Users do
   """
   def make_admin(%User{} = user) do
     change(user, role: "admin") |> Repo.update()
+  end
+
+  @doc """
+  Deletes a User.
+
+  ## Examples
+
+      iex> delete_user(user)
+      {:ok, %Holiday{}}
+
+      iex> delete_user(user)
+      {:error, %Ecto.Changeset{}}
+
+  """
+  def delete_resource(%User{} = user) do
+    Repo.delete(user)
   end
 end

@@ -2,37 +2,37 @@
 
 <div class="row">
   <div class="col-md-2">
-    <%= img_tag(photo_url(@user), class: "img-thumbnail") %>
+    <%= img_tag(photo_url(@resource), class: "img-thumbnail") %>
   </div>
 
   <div class="col-md-10">
     <ul>
       <li>
         <strong>Name:</strong>
-        <%= @user.name %>
+        <%= @resource.name %>
       </li>
 
       <li>
         <strong>E-mail:</strong>
-        <%= @user.email %>
+        <%= @resource.email %>
       </li>
 
       <li>
         <strong>Provider:</strong>
-        <%= provider(@user) %>
+        <%= provider(@resource) %>
       </li>
 
       <li>
         <strong>Role:</strong>
-        <%= role(@user) %>
+        <%= role(@resource) %>
       </li>
     </ul>
   </div>
 </div>
 
-<%= if can_update_user?(@conn, @user) do %>
+<%= if can_update_user?(@conn, @resource) do %>
   <span>
-    <%= link "Edit", to: user_path(@conn, :edit, @user), class: "btn btn-outline-primary" %>
+    <%= link "Edit", to: user_path(@conn, :edit, @resource), class: "btn btn-outline-primary" %>
   </span>
 <% end %>
 

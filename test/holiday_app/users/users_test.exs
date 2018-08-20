@@ -4,19 +4,19 @@ defmodule HolidayApp.UsersTest do
   alias HolidayApp.Users
   alias HolidayApp.Users.{User, Role}
 
-  describe "list_users/0" do
+  describe "list_resources/0" do
     test "returns all users" do
       insert_pair(:user)
 
-      assert [%User{}, %User{}] = Users.list_users()
+      assert [%User{}, %User{}] = Users.list_resources()
     end
   end
 
-  describe "get_user!/1" do
+  describe "get_resource!/1" do
     test "finds user by id" do
       %User{id: id} = insert(:user)
 
-      assert %User{id: ^id} = Users.get_user!(id)
+      assert %User{id: ^id} = Users.get_resource!(id)
     end
   end
 
@@ -46,38 +46,38 @@ defmodule HolidayApp.UsersTest do
     end
   end
 
-  describe "create_user/1" do
+  describe "create_resource/1" do
     test "with valid data creates a user" do
       attrs = params_for(:google_user, %{name: "Dick Mountain"})
-      assert {:ok, %User{name: name}} = Users.create_user(attrs)
+      assert {:ok, %User{name: name}} = Users.create_resource(attrs)
       assert name == "Dick Mountain"
     end
 
     test "with invalid data returns error changeset" do
       attrs = params_for(:google_user, %{provider: "mail.ru"})
-      assert {:error, %Ecto.Changeset{}} = Users.create_user(attrs)
+      assert {:error, %Ecto.Changeset{}} = Users.create_resource(attrs)
     end
   end
 
-  describe "update_user/1" do
+  describe "update_resource/1" do
     test "with valid data updates the user" do
       user = insert(:user, %{name: "John Doe"})
       attrs = %{name: "Jane Doe"}
-      assert {:ok, user} = Users.update_user(user, attrs)
+      assert {:ok, user} = Users.update_resource(user, attrs)
       assert user.name == "Jane Doe"
     end
 
     test "with invalid data returns error changeset" do
       user = insert(:user)
       attrs = %{name: "J"}
-      assert {:error, %Ecto.Changeset{}} = Users.update_user(user, attrs)
+      assert {:error, %Ecto.Changeset{}} = Users.update_resource(user, attrs)
     end
   end
 
-  describe "create_or_update_user/1" do
+  describe "create_or_update/1" do
     test "creates new user if one does not exist" do
       attrs = params_for(:google_user)
-      {:ok, %User{} = user} = Users.create_or_update_user(attrs)
+      {:ok, %User{} = user} = Users.create_or_update(attrs)
       assert user.email == attrs.email
     end
 
@@ -85,7 +85,7 @@ defmodule HolidayApp.UsersTest do
       attrs = params_for(:google_user)
       existing_user = build(:google_user, attrs) |> insert()
 
-      {:ok, user} = Users.create_or_update_user(attrs)
+      {:ok, user} = Users.create_or_update(attrs)
       assert user.id == existing_user.id
     end
 
@@ -98,7 +98,7 @@ defmodule HolidayApp.UsersTest do
 
       attrs = Map.merge(attrs, %{provider: "google", uid: "abc123"})
 
-      {:ok, %User{id: ^id} = user} = Users.create_or_update_user(attrs)
+      {:ok, %User{id: ^id} = user} = Users.create_or_update(attrs)
       assert user.provider == "google"
       assert user.uid == "abc123"
     end

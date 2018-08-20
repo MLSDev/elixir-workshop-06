@@ -14,7 +14,7 @@ defmodule HolidayApp.HolidaysTest do
       assert {:ok, end_date} == Date.new(year, 12, 31)
     end
 
-    test "list_holidays/2 returns all holidays within date range, if given" do
+    test "list_resources/2 returns all holidays within date range, if given" do
       xmas2017 = insert(:holiday, %{date: ~D[2017-12-25]})
       insert(:holiday, %{date: ~D[2017-01-07]})
       insert(:holiday, %{date: ~D[2018-12-25]})
@@ -27,7 +27,7 @@ defmodule HolidayApp.HolidaysTest do
       assert holidays == [xmas2017]
     end
 
-    test "list_holidays/2 sorts all holidays by date, ascending" do
+    test "list_resources/2 sorts all holidays by date, ascending" do
       insert(:holiday, %{date: ~D[2018-12-25]})
       insert(:holiday, %{date: ~D[2018-01-07]})
 
@@ -36,48 +36,48 @@ defmodule HolidayApp.HolidaysTest do
       assert xmas2.date == ~D[2018-12-25]
     end
 
-    test "get_holiday!/1 returns the holiday with given id" do
+    test "get_resource!/1 returns the holiday with given id" do
       holiday = insert(:holiday)
-      assert Holidays.get_holiday!(holiday.id) == holiday
+      assert Holidays.get_resource!(holiday.id) == holiday
     end
 
-    test "create_holiday/1 with valid data creates a holiday" do
+    test "create_resource/1 with valid data creates a holiday" do
       attrs = params_for(:holiday)
-      assert {:ok, %Holiday{} = holiday} = Holidays.create_holiday(attrs)
+      assert {:ok, %Holiday{} = holiday} = Holidays.create_resource(attrs)
       assert holiday.date == attrs[:date]
       assert holiday.kind == attrs[:kind]
       assert holiday.title == attrs[:title]
     end
 
-    test "create_holiday/1 with invalid data returns error changeset" do
+    test "create_resource/1 with invalid data returns error changeset" do
       attrs = %{kind: nil}
-      assert {:error, %Ecto.Changeset{}} = Holidays.create_holiday(attrs)
+      assert {:error, %Ecto.Changeset{}} = Holidays.create_resource(attrs)
     end
 
-    test "update_holiday/2 with valid data updates the holiday" do
+    test "update_resource/2 with valid data updates the holiday" do
       holiday = insert(:holiday, kind: "holiday")
       attrs = %{kind: "workday"}
-      assert {:ok, holiday} = Holidays.update_holiday(holiday, attrs)
+      assert {:ok, holiday} = Holidays.update_resource(holiday, attrs)
       assert %Holiday{} = holiday
       assert holiday.kind == "workday"
     end
 
-    test "update_holiday/2 with invalid data returns error changeset" do
+    test "update_resource/2 with invalid data returns error changeset" do
       holiday = insert(:holiday)
       attrs = %{kind: nil}
-      assert {:error, %Ecto.Changeset{}} = Holidays.update_holiday(holiday, attrs)
-      assert holiday == Holidays.get_holiday!(holiday.id)
+      assert {:error, %Ecto.Changeset{}} = Holidays.update_resource(holiday, attrs)
+      assert holiday == Holidays.get_resource!(holiday.id)
     end
 
-    test "delete_holiday/1 deletes the holiday" do
+    test "delete_resource/1 deletes the holiday" do
       holiday = insert(:holiday)
-      assert {:ok, %Holiday{}} = Holidays.delete_holiday(holiday)
-      assert_raise Ecto.NoResultsError, fn -> Holidays.get_holiday!(holiday.id) end
+      assert {:ok, %Holiday{}} = Holidays.delete_resource(holiday)
+      assert_raise Ecto.NoResultsError, fn -> Holidays.get_resource!(holiday.id) end
     end
 
-    test "change_holiday/1 returns a holiday changeset" do
+    test "change_resource/1 returns a holiday changeset" do
       holiday = insert(:holiday)
-      assert %Ecto.Changeset{} = Holidays.change_holiday(holiday)
+      assert %Ecto.Changeset{} = Holidays.change_resource(holiday)
     end
   end
 end

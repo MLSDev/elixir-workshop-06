@@ -11,7 +11,7 @@ defmodule HolidayAppWeb.Guardian do
   end
 
   def resource_from_claims(%{"sub" => id} = _claims) do
-    resource = HolidayApp.Users.get_user!(id)
+    resource = HolidayApp.Users.get_resource!(id)
     {:ok,  resource}
   end
 

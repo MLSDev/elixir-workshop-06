@@ -19,7 +19,7 @@ defmodule HolidayApp.Auth do
   end
 
   def authenticate(%Ueberauth.Auth{} = auth) do
-    parse_auth(auth) |> Users.create_or_update_user()
+    parse_auth(auth) |> Users.create_or_update()
   end
 
   defp parse_auth(%Ueberauth.Auth{} = auth) do
